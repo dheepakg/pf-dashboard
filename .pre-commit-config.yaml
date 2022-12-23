@@ -11,7 +11,4 @@ repos:
     - id: end-of-file-fixer
     - id: check-yaml
     - id: check-added-large-files
--   repo: https://github.com/mverteuil/precommit-dephell
-    rev: master
-    hooks:
-    - id: pyproject-toml-to-requirements-txt
+# Include some way to generate requirements.txt through precommit
