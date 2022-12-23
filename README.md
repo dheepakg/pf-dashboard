@@ -1,2 +1,3 @@
-# price-tracker-overtime
-Capturing and visualising price change of products over each purchase
+# Portfolio Dashboard
+
+This is to track and project portfolio (personal finance) for easier understanding of what our money is doing.
