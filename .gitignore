@@ -238,4 +238,10 @@ rsconnect/
 # R package: bookdown caching files
 /*_files/
 
+# referrals
+.referrals
+
+# sqlite DBs
+*.db
+
 # End of https://www.toptal.com/developers/gitignore/api/python,r,hugo
