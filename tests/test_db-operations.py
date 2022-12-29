@@ -1,5 +1,6 @@
 import sqlite3
 import tomli
+import pytest
 
 
 def test_config_file_exists():
@@ -7,6 +8,7 @@ def test_config_file_exists():
         assert str(config_file) == "<_io.BufferedReader name='config.toml'>"
 
 
+@pytest.mark.check_conn
 def test_db_connect():
     with open("config.toml", mode="rb") as config_file:
         config = tomli.load(config_file)
