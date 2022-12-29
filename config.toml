@@ -1,0 +1,4 @@
+title = "Configuration file"
+
+[backend]
+db_file = './data/mutual-fund.db'
