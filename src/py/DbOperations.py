@@ -1,9 +1,25 @@
 import sqlite3
 import tomli
+import logging
+
+with open("config.toml", mode="rb") as config_file:
+    config = tomli.load(config_file)
+
+logging.basicConfig(
+    format=config["logging"]["format"],
+    datefmt=config["logging"]["date_format"],
+    filename=config["logging"]["file_name"],
+    filemode="a",
+)
+
+logger = logging.getLogger(__name__)
+logger.setLevel(config["logging"]["level"])
 
 
 class DatabaseOperation:
     def __init__(self) -> None:
+        logger.info("Class invoked - DatabaseOperation")
+        self.conn = None
         pass
 
     def config_file_exists(self) -> bool:
@@ -11,20 +27,28 @@ class DatabaseOperation:
             with open("config.toml", mode="rb") as config_file:
                 config = tomli.load(config_file)
             self.db_file_path = config["backend"]["db_file"]
+            logger.info("Config file is present")
             return True
         except:
-            print("Config file doesn't exist")
+            logger.error("Config file doesn't exist")
             return False
 
     def db_connect(self):
-        if self.config_file_exists():
+        print("inside db_connect")
+        logger.info("inside db_connect")
+        file_pres = self.config_file_exists
+        print("dsdsd", file_pres)
+        if file_pres:
+            print("insdie if ")
             try:
                 self.conn = sqlite3.connect(
                     "file:" + self.db_file_path + "?mode=ro", uri=True
                 )
-                print("DB File Exists")
+                logger.info("DB File Exists")
             except:
                 self.conn = sqlite3.connect(self.db_file_path)
-                print("DB file created")
+                logger.info("DB file created")
             finally:
-                return self.conn
+                logger.info("Connection established")
+                # self.conn.close()
+                # return self.conn

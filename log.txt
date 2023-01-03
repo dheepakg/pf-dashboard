@@ -1,0 +1,24 @@
+2022-Dec-30 19:35:21 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:35:21 - __main__ - INFO - *** Starting the application ***
+2022-Dec-30 19:35:21 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:35:21 - DbOperations - INFO - Class invoked - DatabaseOperation
+2022-Dec-30 19:35:21 - DbOperations - INFO - inside db_connect
+2022-Dec-30 19:35:21 - DbOperations - INFO - Connection established
+2022-Dec-30 19:35:33 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:35:33 - __main__ - INFO - *** Starting the application ***
+2022-Dec-30 19:35:33 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:35:33 - DbOperations - INFO - Class invoked - DatabaseOperation
+2022-Dec-30 19:35:33 - DbOperations - INFO - inside db_connect
+2022-Dec-30 19:35:33 - DbOperations - INFO - Connection established
+2022-Dec-30 19:36:04 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:36:04 - __main__ - INFO - *** Starting the application ***
+2022-Dec-30 19:36:04 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:36:04 - DbOperations - INFO - Class invoked - DatabaseOperation
+2022-Dec-30 19:36:04 - DbOperations - INFO - inside db_connect
+2022-Dec-30 19:36:04 - DbOperations - INFO - Connection established
+2022-Dec-30 19:36:30 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:36:30 - __main__ - INFO - *** Starting the application ***
+2022-Dec-30 19:36:30 - __main__ - INFO - ---------------------------------------------------------------
+2022-Dec-30 19:36:30 - DbOperations - INFO - Class invoked - DatabaseOperation
+2022-Dec-30 19:36:30 - DbOperations - INFO - inside db_connect
+2022-Dec-30 19:36:30 - DbOperations - INFO - Connection established

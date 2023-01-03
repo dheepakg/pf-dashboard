@@ -2,3 +2,9 @@ title = "Configuration file"
 
 [backend]
 db_file = './data/mutual-fund.db'
+
+[logging]
+level = 'DEBUG'                                                 #DEBUG, INFO, WARNING, ERROR, CRITICAL
+file_name = 'log.txt'
+format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+date_format = '%Y-%b-%d %H:%M:%S'
