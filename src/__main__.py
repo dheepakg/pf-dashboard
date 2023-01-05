@@ -21,7 +21,11 @@ logger.info("---------------------------------------------------------------")
 
 
 backend_stuff = DbOperations.DatabaseOperation(Config_dict["backend"])
-print(backend_stuff.db_connect())
-# backend_stuff.conn.close()
+
+
+if backend_stuff.db_connect():
+    print("Ready to execute query")
+else:
+    print("Connection error")
 
 # print(backend_stuff.conn)

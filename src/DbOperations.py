@@ -25,6 +25,7 @@ class DatabaseOperation:
         pass
 
     def db_connect(self):
+        """To check whether the DB file is available or not"""
         print("inside db_connect")
         logger.info("inside db_connect")
 
