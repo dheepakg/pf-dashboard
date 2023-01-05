@@ -6,6 +6,6 @@ db_file = 'mutual-fund.db'
 
 [logging]
 level = 'DEBUG'                                                 #DEBUG, INFO, WARNING, ERROR, CRITICAL
-file_name = 'log.txt'
+file_name = 'logs/app.log'
 format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 date_format = '%Y-%b-%d %H:%M:%S'
