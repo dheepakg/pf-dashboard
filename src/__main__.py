@@ -1,11 +1,9 @@
 import DbOperations
 import logging
 import logging.config
-import tomli
+from readConfig import Config_dict
 
-with open("config.toml", mode="rb") as config_file:
-    config = tomli.load(config_file)
-
+config = Config_dict
 
 logging.basicConfig(
     format=config["logging"]["format"],
