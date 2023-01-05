@@ -6,10 +6,11 @@ jobs:
     env:
       OS: ubuntu-latest
       PYTHON: '3.9'
+
     steps:
-    - uses: checkout@v2
-      with:
-        fetch-depth: '2'
+    # - uses: checkout@v2
+    #   with:
+    #     fetch-depth: '2'
 
     - name: Setup Python
       uses: actions/setup-python@master
