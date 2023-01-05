@@ -34,10 +34,18 @@ class DatabaseOperation:
                 "file:" + self.db_file_path + "?mode=ro", uri=True
             )
             logger.info("DB File Exists")
+
+            return self.conn
         except:
-            self.conn = sqlite3.connect(self.db_file_path)
-            logger.info("DB file created")
-        finally:
-            logger.info("Connection established")
-            # self.conn.close()
-            # return self.conn
+            return self.conn
+
+    # def db_connect(self):
+
+    #     logger.info("inside db_connect")
+
+    #     self.conn = sqlite3.connect(
+    #         "file:" + self.db_file_path + "?mode=ro", uri=True
+    #     )
+    #     logger.info("DB File Exists")
+
+    #     return self.conn

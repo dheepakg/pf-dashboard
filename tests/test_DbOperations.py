@@ -7,4 +7,6 @@ print(backend)
 
 
 def test_dbConnect():
-    assert str(type(Config_dict["backend"]["db_file"])) == "<class 'str'>"
+    conn_string = backend.db_connect()
+    print(conn_string)
+    assert "sqlite3.Connection" in str(conn_string)
