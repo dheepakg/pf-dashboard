@@ -244,4 +244,7 @@ rsconnect/
 # sqlite DBs
 *.db
 
+# Skip committing log files
+*.log
+
 # End of https://www.toptal.com/developers/gitignore/api/python,r,hugo
