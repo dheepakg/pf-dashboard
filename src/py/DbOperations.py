@@ -20,6 +20,7 @@ class DatabaseOperation:
     def __init__(self) -> None:
         logger.info("Class invoked - DatabaseOperation")
         self.conn = None
+        self.db_file_path = ""
         pass
 
     def config_file_exists(self) -> bool:
@@ -36,9 +37,9 @@ class DatabaseOperation:
     def db_connect(self):
         print("inside db_connect")
         logger.info("inside db_connect")
-        file_pres = self.config_file_exists
-        print("dsdsd", file_pres)
-        if file_pres:
+        file_present_or_not = self.config_file_exists()
+        print("dsdsd", file_present_or_not)
+        if file_present_or_not:
             print("insdie if ")
             try:
                 self.conn = sqlite3.connect(

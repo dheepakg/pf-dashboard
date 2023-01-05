@@ -24,6 +24,6 @@ logger.info("---------------------------------------------------------------")
 
 backend_stuff = DbOperations.DatabaseOperation()
 backend_stuff.db_connect()
-backend_stuff.conn.close()
+# backend_stuff.conn.close()
 
 # print(backend_stuff.conn)
