@@ -5,4 +5,4 @@
 
 This is to track and project portfolio (personal finance) for easier understanding of what our money is doing.
 
-Documentation is availabel [here](doc/README.md).
+Documentation is available [here](doc/README.md).
