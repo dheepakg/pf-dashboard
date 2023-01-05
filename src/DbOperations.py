@@ -3,26 +3,25 @@ import tomli
 import logging
 from readConfig import Config_dict
 
-config = Config_dict
+
+config_logs = Config_dict["logging"]
 
 logging.basicConfig(
-    format=config["logging"]["format"],
-    datefmt=config["logging"]["date_format"],
-    filename=config["logging"]["file_name"],
+    format=config_logs["format"],
+    datefmt=config_logs["date_format"],
+    filename=config_logs["file_name"],
     filemode="a",
 )
 
 logger = logging.getLogger(__name__)
-logger.setLevel(config["logging"]["level"])
+logger.setLevel(config_logs["level"])
 
 
 class DatabaseOperation:
     def __init__(self, init_config) -> None:
         logger.info("Class invoked - DatabaseOperation")
         self.conn = None
-        self.db_file_path = (
-            init_config["backend"]["db_file_dir"] + init_config["backend"]["db_file"]
-        )
+        self.db_file_path = init_config["db_file_dir"] + init_config["db_file"]
         pass
 
     def db_connect(self):
@@ -38,14 +37,3 @@ class DatabaseOperation:
             return self.conn
         except:
             return self.conn
-
-    # def db_connect(self):
-
-    #     logger.info("inside db_connect")
-
-    #     self.conn = sqlite3.connect(
-    #         "file:" + self.db_file_path + "?mode=ro", uri=True
-    #     )
-    #     logger.info("DB File Exists")
-
-    #     return self.conn

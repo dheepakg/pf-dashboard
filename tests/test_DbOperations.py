@@ -1,7 +1,7 @@
 from src.DbOperations import DatabaseOperation
 from src.readConfig import Config_dict
 
-backend = DatabaseOperation(Config_dict)
+backend = DatabaseOperation(Config_dict["backend"])
 
 print(backend)
 
