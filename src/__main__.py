@@ -1,31 +1,31 @@
 import DbOperations
 import logging
 import logging.config
-from readConfig import Config_dict
+from datetime import datetime
+from accessConfig import read_config_file, update_config_file
 
-config_logs = Config_dict["logging"]
-
-logging.basicConfig(
-    format=config_logs["format"],
-    datefmt=config_logs["date_format"],
-    filename=config_logs["file_name"],
-    filemode="w",
-)
+config_contents = read_config_file("config.toml")
 
 
-logger = logging.getLogger(__name__)
-logger.setLevel(config_logs["level"])
-logger.info("---------------------------------------------------------------")
-logger.info("*** Starting the application ***")
-logger.info("---------------------------------------------------------------")
+backend_stuff = DbOperations.DatabaseOperation(config_contents["backend"])
 
 
-backend_stuff = DbOperations.DatabaseOperation(Config_dict["backend"])
+print("---------------------------------------------------------------")
+print("*** Starting the application ***")
+print("---------------------------------------------------------------")
 
 
-if backend_stuff.db_connect():
-    print("Ready to execute query")
+if config_contents["initial_setup"]["completed"]:
+    print("Initial setup completed")
 else:
-    print("Connection error")
+    print("Requires initial setup")
+    # TODO Check table under DB
+    if backend_stuff.db_connect():
+        print("DB is already available")
+        print("Updating ")
+        update_config_file(config_contents)
+    else:
+        print("Connection error")
+
 
 # print(backend_stuff.conn)

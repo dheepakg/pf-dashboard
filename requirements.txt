@@ -3,3 +3,4 @@ pyxirr==0.7.3
 tomli==2.0.1
 coverage==7.0.3
 pytest-cov==3.0.0
+tomli_w==1.0.0
