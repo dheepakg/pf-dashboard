@@ -1,10 +1,10 @@
 import sqlite3
 import tomli
 import logging
-from readConfig import Config_dict
+from accessConfig import read_config_file
 
-
-config_logs = Config_dict["logging"]
+config_contents = read_config_file("config.toml")
+config_logs = config_contents["logging"]
 
 logging.basicConfig(
     format=config_logs["format"],

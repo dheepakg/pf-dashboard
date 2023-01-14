@@ -1,8 +1,9 @@
 from readConfig import Config_dict
 import sqlite3
-import logging
+import log_handler
 
 
-class DbOperations:
+class FreshDbOperations:
     def __init__(self, init_config) -> None:
+        log_handler.info_logs("Init FreshDbOperations")
         pass

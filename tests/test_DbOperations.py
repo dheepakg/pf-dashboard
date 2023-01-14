@@ -1,6 +1,7 @@
 from src.DbOperations import DatabaseOperation
-from src.readConfig import Config_dict
+from src.accessConfig import read_config_file
 
+Config_dict = read_config_file("config.toml")
 backend = DatabaseOperation(Config_dict["backend"])
 
 print(backend)
