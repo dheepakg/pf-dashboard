@@ -14,5 +14,9 @@ repos:
     - id: check-case-conflict
     # - id: detect-aws-credentials
     - id: detect-private-key
-    # - id: no-commit-to-branch
+    - id: no-commit-to-branch
+-   repo: https://github.com/asottile/reorder_python_imports
+    rev: v3.9.0
+    hooks:
+    -   id: reorder-python-imports
 # Include some way to generate requirements.txt through precommit
