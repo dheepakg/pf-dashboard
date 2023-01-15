@@ -12,3 +12,19 @@ level = "DEBUG"
 file_name = "logs/app.log"
 format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 date_format = "%Y-%b-%d %H:%M:%S"
+
+[fund_list]
+fund1 = "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"
+fund1_code = 122639
+fund2 = "Mirae Asset Large Cap Fund - Growth Plan"
+fund2_code = 107578
+fund3 = "UTI Nifty 50 Index Fund - Growth Option- Direct"
+fund3_code = 120716
+fund4 = "Aditya Birla Sun Life Tax Relief '96 - Growth Option"
+fund4_code = 107745
+fund5 = "Franklin India Prima Fund-Growth"
+fund5_code = 100473
+fund6 = "ICICI Prudential Long Term Equity Fund (Tax Saving) - Growth"
+fund6_code = 100354
+fund7 = "ICICI Prudential Smallcap Fund - Growth"
+fund7_code = 106823
