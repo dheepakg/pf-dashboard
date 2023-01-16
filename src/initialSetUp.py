@@ -1,6 +1,7 @@
-from readConfig import Config_dict
 import sqlite3
+
 import log_handler
+from readConfig import Config_dict
 
 
 class FreshDbOperations:
