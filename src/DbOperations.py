@@ -1,6 +1,7 @@
-import sqlite3
-import tomli
 import logging
+import sqlite3
+
+import tomli
 from accessConfig import read_config_file
 
 config_contents = read_config_file("config.toml")
@@ -29,12 +30,7 @@ class DatabaseOperation:
         print("inside db_connect")
         logger.info("inside db_connect")
 
-        try:
-            self.conn = sqlite3.connect(
-                "file:" + self.db_file_path + "?mode=ro", uri=True
-            )
-            logger.info("DB File Exists")
+        self.conn = sqlite3.connect("file:" + self.db_file_path + "?mode=ro", uri=True)
+        logger.info("DB File Exists")
 
-            return self.conn
-        except:
-            return self.conn
+        return self.conn

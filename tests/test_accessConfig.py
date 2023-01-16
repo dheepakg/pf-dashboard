@@ -1,5 +1,6 @@
-from src.accessConfig import read_config_file
 import tomli
+
+from src.accessConfig import read_config_file
 
 
 def test_readConfig():

@@ -1,7 +1,7 @@
-import logging
 import logging.config
-from accessConfig import Config_dict
 from datetime import datetime
+
+from accessConfig import Config_dict
 
 
 class LogIt:
