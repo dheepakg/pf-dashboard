@@ -19,6 +19,10 @@ logger.setLevel(config_logs["level"])
 
 
 class DatabaseOperation:
+    """
+    This class is used to execute Database actions.
+    """
+
     def __init__(self, init_config) -> None:
         logger.info("Class invoked - DatabaseOperation")
         self.conn = None
@@ -26,7 +30,9 @@ class DatabaseOperation:
         pass
 
     def db_connect(self):
-        """To check whether the DB file is available or not"""
+        """
+        To check whether the DB file is available or not. Returns connection object.
+        """
         print("inside db_connect")
         logger.info("inside db_connect")
 

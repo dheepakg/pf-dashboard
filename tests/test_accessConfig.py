@@ -7,6 +7,9 @@ test_config_file = "tests/config_test.toml"
 
 
 def test_readConfig():
+    """
+    Tests the config-reader method.
+    """
     result = read_config_file(file_path=test_config_file)
     with open(test_config_file, mode="rb") as config_file:
         test_config = tomli.load(config_file)
@@ -15,6 +18,9 @@ def test_readConfig():
 
 
 def test_update_config_file():
+    """
+    Tests the config-file-updater
+    """
     test_config_contents = read_config_file(file_path=test_config_file)
 
     update_config_file(contents=test_config_contents, file_path=test_config_file)

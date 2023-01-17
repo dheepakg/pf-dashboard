@@ -13,6 +13,9 @@ ptc1 = priceCapture(two_funds, nav_hist_start_dt, nav_hist_end_date)
 def test_cleanNAV(
     st_dt="2023-01-12", end_date="2023-01-13", fund_num=1, schemeCode=122639
 ):
+    """
+    Tests cleanNAV method.
+    """
     scheme_url = "https://api.mfapi.in/mf/" + str(schemeCode)
     df_scheme_data = requests.get(scheme_url)
 
@@ -32,6 +35,9 @@ def test_cleanNAV(
 
 
 def test_fetchFundNAV():
+    """
+    Tests the fetchFundNAV method.
+    """
     fund_nav = dict()
     fund_nav_from_method = ptc1.fetchFundNAV()
     validation_flag = list()
@@ -62,6 +68,9 @@ def test_fetchFundNAV():
 
 
 def test_joinFundNAVs():
+    """
+    Tests joinFundNAVs method.
+    """
     df_from_method = ptc1.joinFundNAVs()
 
     fund_nav = dict()

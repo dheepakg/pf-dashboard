@@ -3,11 +3,37 @@ import requests
 
 
 class priceCapture:
+    """
+    This is to capture historical NAVs between 2 dates.
+
+    Attributes:
+    -----------
+    schemaDetails : dict
+        a dict with unique ID (to identify fund) and the scheme's AMFI number.
+
+    nav_hist_start_dt : str
+        Start date from which NAVs to be captured.
+
+    nav_hist_end_dt : str
+        End date till which the NAVs to be captured.
+
+    Methods
+    ------
+    cleanNAV(fund_num, schemeCode)
+        Cleans the date and captures the NAV between start & end date.
+
+    fetchFundNAV()
+        Fetches NAVs of multiple funds.
+
+    joinFundNAVs()
+        Joins multiple the fund scheme's NAVs into single Dataframe.
+    """
+
     def __init__(
         self,
         schemeDetails: dict,
-        nav_hist_start_dt="2015-10-01",
-        nav_hist_end_date="2023-01-13",
+        nav_hist_start_dt: str = "2015-10-01",
+        nav_hist_end_date: str = "2023-01-13",
     ) -> None:
         self.schemeDetails = schemeDetails
         self.nav_hist_start_dt = nav_hist_start_dt
@@ -15,6 +41,21 @@ class priceCapture:
         self.fund_nav = dict()
 
     def cleanNAV(self, fund_num: int, schemeCode: int):
+        """
+        Cleans the date and captures the NAV between start & end date.
+
+        Reformat date to YYYY-MM-DD and fetches NAV between nav_hist_start_dt & nav_hist_end_dt (Class attributes).
+        Returns dataframe.
+
+        Parameters:
+        ----------
+        fund_num: int
+            The local unique ID to identify fund scheme.
+
+        schemeCode: int
+            This is fund's AMFI code.
+
+        """
         scheme_url = "https://api.mfapi.in/mf/" + str(schemeCode)
 
         df_scheme_data = requests.get(scheme_url)
@@ -34,13 +75,24 @@ class priceCapture:
         return df_fund
 
     def fetchFundNAV(self) -> dict:
+        """
+        Fetches NAVs of multiple funds.
 
+        Returns dictionary with key as fund<num>:DF.
+
+        Example fund1: Dataframe
+        """
         for fund_seq, fund_code in self.schemeDetails.items():
             self.fund_nav["fund" + str(fund_seq)] = self.cleanNAV(fund_seq, fund_code)
 
         return self.fund_nav
 
     def joinFundNAVs(self):
+        """
+        Joins multiple the fund scheme's NAVs into single Dataframe.
+
+        All the fund details passed in the config.toml is read and their corresponding NAVs are added as individual columns against date.
+        """
 
         df_final = pd.concat(
             list(self.fetchFundNAV().values()), join="outer", axis=1, sort=False
