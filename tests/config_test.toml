@@ -1,0 +1,23 @@
+title = "Configuration file"
+
+[initial_setup]
+completed = true
+
+[backend]
+db_file_dir = "./data/"
+db_file = "mutual-fund.db"
+
+[logging]
+level = "DEBUG"
+file_name = "logs/app.log"
+format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+date_format = "%Y-%b-%d %H:%M:%S"
+
+[fund_list]
+fund1 = 122639
+fund2 = 107578
+fund3 = 120716
+fund4 = 107745
+fund5 = 100473
+fund6 = 100354
+fund7 = 106823
