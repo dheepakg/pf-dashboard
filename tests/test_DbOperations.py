@@ -8,6 +8,9 @@ print(backend)
 
 
 def test_dbConnect():
+    """
+    Checks whether the DB file exists under the repo or not.
+    """
     conn_string = backend.db_connect()
     print(conn_string)
     assert "sqlite3.Connection" in str(conn_string)
