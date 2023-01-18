@@ -28,7 +28,6 @@ class DatabaseOperation:
         self.conn = None
         self.db_file_path = init_config["db_file_dir"] + init_config["db_file"]
         self.sql_query = sql_query
-        pass
 
     def db_connect(self):
         """
@@ -49,4 +48,4 @@ class DatabaseOperation:
         self.db_connect()
         self.conn.execute(self.sql_query)
         self.conn.commit()
-        self.close()
+        self.conn.close()

@@ -11,7 +11,9 @@ config_contents = read_config_file("config.toml")
 with open("src/sql/hist_nav_dim.sql", "r") as sql_ddl:
     sql_query = sql_ddl.read()
 
-backend_stuff = DbOperations.DatabaseOperation(config_contents["backend"], sql_query)
+backend_stuff = DbOperations.DatabaseOperation(
+    config_contents["backend"], "select * from hist_nav_dim"
+)
 hist_nav = priceCapture(config_contents["fund_list"])
 
 print("---------------------------------------------------------------")
