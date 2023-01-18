@@ -2,7 +2,7 @@ from src.accessConfig import read_config_file
 from src.DbOperations import DatabaseOperation
 
 Config_dict = read_config_file("config.toml")
-backend = DatabaseOperation(Config_dict["backend"])
+backend = DatabaseOperation(Config_dict["backend"], "select * from hist_nav_dim;")
 
 print(backend)
 
