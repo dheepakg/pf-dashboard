@@ -3,15 +3,15 @@ import requests
 
 from src.priceTrendCapture import priceCapture
 
-two_funds = {"fund1": 122639, "fund2": 107578}
+two_funds = {"ppfas": 122639, "uti": 107578}
 nav_hist_start_dt = "2023-01-12"
 nav_hist_end_date = "2023-01-13"
-ptc = priceCapture({1: 122639}, nav_hist_start_dt, nav_hist_end_date)
+ptc = priceCapture({"ppfas": 122639}, nav_hist_start_dt, nav_hist_end_date)
 ptc1 = priceCapture(two_funds, nav_hist_start_dt, nav_hist_end_date)
 
 
 def test_cleanNAV(
-    st_dt="2023-01-12", end_date="2023-01-13", fund_num=1, schemeCode=122639
+    st_dt="2023-01-12", end_date="2023-01-13", fund_num="ppfas", schemeCode=122639
 ):
     """
     Tests cleanNAV method.
@@ -27,11 +27,11 @@ def test_cleanNAV(
 
     df_superset.set_index("date", inplace=True)
 
-    df_superset.rename(columns={"nav": str(fund_num)}, inplace=True)
+    df_superset.rename(columns={"nav": fund_num}, inplace=True)
 
     df_fund = df_superset.loc[st_dt:end_date]
 
-    assert df_fund.equals(ptc.cleanNAV(1, 122639))
+    assert df_fund.equals(ptc.cleanNAV("ppfas", 122639))
 
 
 def test_fetchFundNAV():
@@ -90,7 +90,7 @@ def test_joinFundNAVs():
 
         df_fund = df_superset.loc[nav_hist_start_dt:nav_hist_end_date]
 
-        fund_nav["fund" + str(fund_seq)] = df_fund
+        fund_nav[fund_seq] = df_fund
 
     df_built_for_testing = pd.concat(
         list(fund_nav.values()), join="outer", axis=1, sort=False

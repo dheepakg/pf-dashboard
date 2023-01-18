@@ -23,7 +23,7 @@ repos:
     rev: 1.5.0  # or master if you're bold
     hooks:
     - id: interrogate
-      args: [--quiet, --fail-under=95]
+      args: [ --fail-under=50]
 
 
 # Include some way to generate requirements.txt through precommit

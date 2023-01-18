@@ -40,7 +40,7 @@ class priceCapture:
         self.nav_hist_end_dt = nav_hist_end_date
         self.fund_nav = dict()
 
-    def cleanNAV(self, fund_num: int, schemeCode: int):
+    def cleanNAV(self, fund_num: str, schemeCode: int):
         """
         Cleans the date and captures the NAV between start & end date.
 
@@ -49,8 +49,8 @@ class priceCapture:
 
         Parameters:
         ----------
-        fund_num: int
-            The local unique ID to identify fund scheme.
+        fund_num: str
+            The fund name to identify fund scheme.
 
         schemeCode: int
             This is fund's AMFI code.
@@ -68,7 +68,7 @@ class priceCapture:
 
         df_superset.set_index("date", inplace=True)
 
-        df_superset.rename(columns={"nav": str(fund_num)}, inplace=True)
+        df_superset.rename(columns={"nav": fund_num}, inplace=True)
 
         df_fund = df_superset.loc[self.nav_hist_start_dt : self.nav_hist_end_dt]
 
@@ -82,8 +82,8 @@ class priceCapture:
 
         Example fund1: Dataframe
         """
-        for fund_seq, fund_code in self.schemeDetails.items():
-            self.fund_nav["fund" + str(fund_seq)] = self.cleanNAV(fund_seq, fund_code)
+        for fund_nm, fund_code in self.schemeDetails.items():
+            self.fund_nav[fund_nm] = self.cleanNAV(fund_nm, fund_code)
 
         return self.fund_nav
 
@@ -101,7 +101,7 @@ class priceCapture:
         return df_final
 
 
-# fund_dict = {'fund1':122639, 'fund2':107578 }
+# fund_dict = {'ppfas':122639, 'uti':107578 }
 
 # obj = priceCapture(fund_dict)
 
