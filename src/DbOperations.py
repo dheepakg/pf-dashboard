@@ -55,8 +55,9 @@ class DatabaseOperation:
         """
         To load historical NAV into table
         """
-        conn = self.db_connect()
-        df.to_sql('hist_nav_dim', conn, if_exists='replace', index=True)
+        # conn = self.db_connect()
+        conn = sqlite3.connect(self.db_file_path )
+        df.to_sql('hist_nav_dim', conn, if_exists='append', index=False)
         conn.commit()
         conn.close()
 

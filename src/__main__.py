@@ -14,7 +14,11 @@ with open("src/sql/hist_nav_dim.sql", "r") as sql_ddl:
 backend_stuff = DbOperations.DatabaseOperation(
     config_contents["backend"], "select * from hist_nav_dim"
 )
-hist_nav = priceCapture(config_contents["fund_list"])
+hist_nav = priceCapture(config_contents["fund_list"],
+                        nav_hist_start_dt='2023-01-03',
+                        nav_hist_end_date='2023-01-04')
+
+# hist_nav = priceCapture(config_contents["fund_list"])
 
 print("---------------------------------------------------------------")
 print("*** Starting the application ***")

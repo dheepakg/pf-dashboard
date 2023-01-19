@@ -40,7 +40,7 @@ class priceCapture:
         self.nav_hist_end_dt = nav_hist_end_date
         self.fund_nav = dict()
 
-    def cleanNAV(self, fund_num: str, schemeCode: int):
+    def cleanNAV(self, fund_name: str, schemeCode: int):
         """
         Cleans the date and captures the NAV between start & end date.
 
@@ -68,11 +68,11 @@ class priceCapture:
 
         df_superset.set_index("date", inplace=True)
 
-        df_superset.rename(columns={"nav": fund_num}, inplace=True)
+        df_superset.rename(columns={"nav": fund_name}, inplace=True)
 
-        df_fund = df_superset.loc[self.nav_hist_start_dt : self.nav_hist_end_dt]
+        df_fund_with_date_index  = df_superset.loc[self.nav_hist_start_dt : self.nav_hist_end_dt]
 
-        return df_fund
+        return df_fund_with_date_index
 
     def fetchFundNAV(self) -> dict:
         """
@@ -85,6 +85,7 @@ class priceCapture:
         for fund_nm, fund_code in self.schemeDetails.items():
             self.fund_nav[fund_nm] = self.cleanNAV(fund_nm, fund_code)
 
+
         return self.fund_nav
 
     def joinFundNAVs(self):
@@ -94,15 +95,40 @@ class priceCapture:
         All the fund details passed in the config.toml is read and their corresponding NAVs are added as individual columns against date.
         """
 
-        df_final = pd.concat(
+        df_final_with_date_index = pd.concat(
             list(self.fetchFundNAV().values()), join="outer", axis=1, sort=False
         ).sort_index()
 
+        df_final = df_final_with_date_index.reset_index()
+        df_final['id'] = None  # Column value for auto-increment field in sqlite
+        # Columns are reordered as per sqlite table structure
+        column_list = df_final.columns.values
+        print("Column list >> ",column_list)
+        col_id_date = [column_list[-1], column_list[0]]
+
+        list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
+        new_column_list = col_id_date + list_of_funds
+        print("New column list >> ",new_column_list)
+        df_final = df_final[new_column_list]
+
+        print("NEw column list >> ",df_final.columns.values.tolist())
         return df_final
 
 
-# fund_dict = {'ppfas':122639, 'uti':107578 }
+price = priceCapture({'ppfas':122639,
+                      'mirae':107578,
+                      'nifty50':120716,
+                      'icici_tax': 100354,
+                      'icici_scap' : 106823,
+                      'prima': 100473,
+                      'absl96' : 107745
+                      },
+                        nav_hist_start_dt='2023-01-02',nav_hist_end_date='2023-01-04')
 
-# obj = priceCapture(fund_dict)
 
-# print("return >>  ",obj.joinFundNAVs())
+# print(price.cleanNAV('ppfas',122639))
+# df = price.joinFundNAVs()
+# print(df)
+
+
+
