@@ -57,7 +57,7 @@ def test_fetchFundNAV():
 
         df_fund = df_superset.loc[nav_hist_start_dt:nav_hist_end_date]
 
-        fund_nav["fund" + str(fund_seq)] = df_fund
+        fund_nav[str(fund_seq)] = df_fund
 
     list_built_from_method = list(fund_nav_from_method.values())
     list_built_for_testing = list(fund_nav.values())
@@ -90,10 +90,24 @@ def test_joinFundNAVs():
 
         df_fund = df_superset.loc[nav_hist_start_dt:nav_hist_end_date]
 
+        df_fund.reset_index()
+        df_fund['id'] = None
+
+        # Columns are reordered as per sqlite table structure
+        column_list = df_fund.columns.values
+        col_id_date = [column_list[-1], column_list[0]]
+        list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
+        new_column_list = col_id_date + list_of_funds
+
+        df_fund = df_fund[new_column_list]
+
         fund_nav[fund_seq] = df_fund
+
 
     df_built_for_testing = pd.concat(
         list(fund_nav.values()), join="outer", axis=1, sort=False
     ).sort_index()
+
+    print("Testing > ", df_built_for_testing)
 
     assert df_built_for_testing.equals(df_from_method)
