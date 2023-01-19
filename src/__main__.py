@@ -36,4 +36,6 @@ else:
         print("Connection error")
 
 
-backend_stuff.execute_sql()
+# backend_stuff.execute_sql()
+hist_nav = hist_nav.joinFundNAVs()
+backend_stuff.historical_nav_load(hist_nav)
