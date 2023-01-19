@@ -1,7 +1,8 @@
 import logging
 import sqlite3
+import pandas as pd
 
-import tomli
+
 from accessConfig import read_config_file
 
 config_contents = read_config_file("config.toml")
@@ -49,3 +50,13 @@ class DatabaseOperation:
         self.conn.execute(self.sql_query)
         self.conn.commit()
         self.conn.close()
+
+    def historical_nav_load(self, df) -> None:
+        """
+        To load historical NAV into table
+        """
+        conn = self.db_connect()
+        df.to_sql('hist_nav_dim', conn, if_exists='replace', index=True)
+        conn.commit()
+        conn.close()
+
