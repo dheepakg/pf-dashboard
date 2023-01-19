@@ -242,7 +242,7 @@ rsconnect/
 .referrals
 
 # sqlite DBs
-data/*.*
+*.db
 
 # Skip committing log files
 *.log
