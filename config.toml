@@ -6,6 +6,7 @@ completed = true
 [backend]
 db_file_dir = "./data/"
 db_file = "mutual-fund.db"
+tables.historical_nav = 'hist_nav_dim' # TODO Check nested keys
 
 [logging]
 level = "DEBUG"
