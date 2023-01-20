@@ -25,7 +25,7 @@ class DatabaseOperation:
         """
         print("inside db_connect", self.db_file_path)
 
-        self.conn = sqlite3.connect("file:" + self.db_file_path + "?mode=ro", uri=True)
+        self.conn = sqlite3.connect("file:" + "data/mutual-fund.db" + "?mode=ro", uri=True)
 
         return self.conn
 
