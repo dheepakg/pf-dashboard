@@ -6,6 +6,7 @@ completed = true
 [backend]
 db_file_dir = "./data/"
 db_file = "mutual-fund.db"
+tables.historical_nav = 'hist_nav_dim' # TODO Check nested keys
 
 [logging]
 level = "DEBUG"
@@ -14,12 +15,10 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 date_format = "%Y-%b-%d %H:%M:%S"
 
 [fund_list]
-fund1 = 122639 # "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"
-fund2 = 107578 # "Mirae Asset Large Cap Fund - Growth Plan"
-fund3 = 120716 # "UTI Nifty 50 Index Fund - Growth Option- Direct"
-fund4 = 107745 # "Aditya Birla Sun Life Tax Relief '96 - Growth Option"
-fund5 = 100473 # "Franklin India Prima Fund-Growth"
-
-fund6 = 100354 # "ICICI Prudential Long Term Equity Fund (Tax Saving) - Growth"
-
-fund7 = 106823 # "ICICI Prudential Smallcap Fund - Growth"
+ppfas = 122639      # "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"
+mirae = 107578      # "Mirae Asset Large Cap Fund - Growth Plan"
+nifty50 = 120716    # "UTI Nifty 50 Index Fund - Growth Option- Direct"
+icici_tax = 100354  # "ICICI Prudential Long Term Equity Fund (Tax Saving) - Growth"
+icici_scap = 106823 # "ICICI Prudential Smallcap Fund - Growth"
+prima = 100473      # "Franklin India Prima Fund-Growth"
+absl96 = 107745     # "Aditya Birla Sun Life Tax Relief '96 - Growth Option"

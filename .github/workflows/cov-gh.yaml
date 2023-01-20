@@ -12,7 +12,11 @@ jobs:
         with:
           python-version: '3.9'
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+          pip install pytest-cov
+          pip install coverage
       - name: Run tests and collect coverage
         run: |
           coverage run -m pytest
