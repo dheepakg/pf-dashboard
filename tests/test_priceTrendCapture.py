@@ -104,13 +104,14 @@ def test_joinFundNAVs():
 
     print("Index >>", df_built_for_testing.index)
 
-    df_built_for_testing['id'] = None
+    # Removing below code to disable auto-inc field
+    # df_built_for_testing['id'] = None
 
     # Columns are reordered as per sqlite table structure
-    column_list = df_built_for_testing.columns.values
-    col_id_date = [column_list[-1], column_list[0]]
-    list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
-    new_column_order = col_id_date + list_of_funds
-    df_built_for_testing = df_built_for_testing[new_column_order]
+    # column_list = df_built_for_testing.columns.values
+    # col_id_date = [column_list[-1], column_list[0]]
+    # list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
+    # new_column_order = col_id_date + list_of_funds
+    # df_built_for_testing = df_built_for_testing[new_column_order]
 
     assert df_built_for_testing.equals(df_from_method)
