@@ -1,6 +1,10 @@
 import pandas as pd
 import requests
+import datetime
 
+now = datetime.datetime.now()
+
+current_date = str(now.strftime("%Y-%m-%d"))
 
 class priceCapture:
     """
@@ -33,7 +37,7 @@ class priceCapture:
         self,
         schemeDetails: dict,
         nav_hist_start_dt: str = "2015-10-01",
-        nav_hist_end_date: str = "2023-01-13",
+        nav_hist_end_date: str = current_date,
     ) -> None:
         self.schemeDetails = schemeDetails
         self.nav_hist_start_dt = nav_hist_start_dt
@@ -100,18 +104,17 @@ class priceCapture:
         ).sort_index()
 
         df_final = df_final_with_date_index.reset_index()
-        df_final['id'] = None  # Column value for auto-increment field in sqlite
+        # df_final['id'] = None  # Column value for auto-increment field in sqlite
         # Columns are reordered as per sqlite table structure
-        column_list = df_final.columns.values
-        print("Column list >> ",column_list)
-        col_id_date = [column_list[-1], column_list[0]]
+        # column_list = df_final.columns.values
 
-        list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
-        new_column_list = col_id_date + list_of_funds
-        print("New column list >> ",new_column_list)
-        df_final = df_final[new_column_list]
+        # col_id_date = [column_list[-1], column_list[0]] # Enable this if auto-inc field is setup in table
 
-        print("NEw column list >> ",df_final.columns.values.tolist())
+        # list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
+        # new_column_list = col_id_date + list_of_funds
+        # print("New column list >> ",new_column_list)
+        # df_final = df_final[new_column_list]
+
         return df_final
 
 

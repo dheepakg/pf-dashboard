@@ -1,5 +1,5 @@
 CREATE TABLE hist_nav_dim(
-    id integer primary key AUTOINCREMENT,
+    -- id integer primary key AUTOINCREMENT,
     date text,
     ppfas NUMERIC,
     mirae NUMERIC,

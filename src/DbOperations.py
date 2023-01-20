@@ -44,7 +44,7 @@ class DatabaseOperation:
         """
         # conn = self.db_connect()
         conn = sqlite3.connect(self.db_file_path )
-        df.to_sql('hist_nav_dim', conn, if_exists='append', index=False)
+        df.to_sql('hist_nav_dim', conn, if_exists='append', index=True)
         conn.commit()
         conn.close()
 
