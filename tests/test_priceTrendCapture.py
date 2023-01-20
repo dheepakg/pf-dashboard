@@ -90,16 +90,6 @@ def test_joinFundNAVs():
 
         df_fund = df_superset.loc[nav_hist_start_dt:nav_hist_end_date]
 
-        df_fund.reset_index()
-        df_fund['id'] = None
-
-        # Columns are reordered as per sqlite table structure
-        column_list = df_fund.columns.values
-        col_id_date = [column_list[-1], column_list[0]]
-        list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
-        new_column_list = col_id_date + list_of_funds
-
-        df_fund = df_fund[new_column_list]
 
         fund_nav[fund_seq] = df_fund
 
@@ -108,6 +98,19 @@ def test_joinFundNAVs():
         list(fund_nav.values()), join="outer", axis=1, sort=False
     ).sort_index()
 
-    print("Testing > ", df_built_for_testing)
+
+
+    df_built_for_testing.reset_index(inplace=True)
+
+    print("Index >>", df_built_for_testing.index)
+
+    df_built_for_testing['id'] = None
+
+    # Columns are reordered as per sqlite table structure
+    column_list = df_built_for_testing.columns.values
+    col_id_date = [column_list[-1], column_list[0]]
+    list_of_funds =list( column_list[1:-1])  # NumPy array is converted into list
+    new_column_order = col_id_date + list_of_funds
+    df_built_for_testing = df_built_for_testing[new_column_order]
 
     assert df_built_for_testing.equals(df_from_method)
