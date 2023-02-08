@@ -7,3 +7,9 @@
 This is to track and project portfolio (personal finance) for easier understanding of what our money is doing.
 
 Documentation is available [here](doc/README.md).
+
+
+**Sample Output**
+The projects final goal is to have charts to visualise investment, returns and projection.
+
+Sample 1 - [Investments over Quarters](output/invested-over-quarters.html)
